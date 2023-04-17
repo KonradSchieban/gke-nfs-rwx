@@ -12,13 +12,13 @@ A GKE cluster with ASM enabled on the cluster
 Commands that can be run sequentially (rather than at once) can be found in `scripts/deploy.sh`
 
 1. [Inject Istio Sidecars](https://cloud.google.com/service-mesh/docs/anthos-service-mesh-proxy-injection) in the application namespace
-`kubectl -n istio-system get controlplanerevision`
-`kubectl label namespace default  istio-injection- istio.io/rev=asm-managed --overwrite`
+ * `kubectl -n istio-system get controlplanerevision`
+ * `kubectl label namespace default  istio-injection- istio.io/rev=asm-managed --overwrite`
 
 2. Enforce mtls in the default namespace
-`kubectl apply -n default -f manifests/peerauth.yaml`
+ * `kubectl apply -n default -f manifests/peerauth.yaml`
 
 3. Deploy NFS and application pods
-`kubectl apply -f manifests/statefulSet-nfs.yaml`
-`kubectl apply -f manifests/service-nfs-server.yaml`
-`kubectl apply -f manifests/debiandepl.yaml`
+ * `kubectl apply -f manifests/statefulSet-nfs.yaml`
+ * `kubectl apply -f manifests/service-nfs-server.yaml`
+ * `kubectl apply -f manifests/debiandepl.yaml`
