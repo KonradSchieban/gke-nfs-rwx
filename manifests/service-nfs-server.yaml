@@ -6,9 +6,12 @@ spec:
   ports:
     - name: nfs
       port: 2049
+      protocol: TCP
     - name: mountd
       port: 20048
+      protocol: TCP
     - name: rpcbind
       port: 111
+      protocol: TCP
   selector:
     app: nfs-server

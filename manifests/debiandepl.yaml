@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debian-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: debian
+  template:
+    metadata:
+      labels:
+        app: debian
+    spec:
+      containers:
+        - name: debian-task
+          image: debian
+          command: ["/bin/sh","-c"]
+          args: ["apt update && apt install -y nfs-common && mkdir -p /nfs/general && mount nfs-server.default.svc.cluster.local:/ /nfs/general && sleep 604800"]
+          securityContext:
+            privileged: true
